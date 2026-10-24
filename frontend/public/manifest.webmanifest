@@ -1,0 +1,9 @@
+{
+  "name": "AR&MS HCM Lite",
+  "short_name": "AR&MS HCM",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F1E3A",
+  "theme_color": "#0F1E3A",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
