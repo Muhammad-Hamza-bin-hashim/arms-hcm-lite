@@ -3,6 +3,9 @@
 AI-assisted Human Capital Management for **AR&MS Management Company**, built for the Saylani Hackathon (HCM Lite brief).
 Three roles (Admin, HR, Employee), 9 modules and 25 functionalities. Every number comes from records created in the app; there is no seeded or dummy data.
 
+**Live app:** https://arms-hcm-lite.onrender.com (opens on the first-run setup screen; on Render's free plan the first visit can take up to a minute to wake up)
+**Repository:** https://github.com/Muhammad-Hamza-bin-hashim/arms-hcm-lite
+
 | | |
 |---|---|
 | **Backend** | Python 3.12+ · Django 6 · Django REST Framework · SimpleJWT · bcrypt · ReportLab (payslip PDF) |
