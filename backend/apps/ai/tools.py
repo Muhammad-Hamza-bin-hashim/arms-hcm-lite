@@ -23,7 +23,10 @@ PERIOD_SCHEMA = {
     "description": "Reporting period. Use 'custom' with from_date/to_date.",
 }
 DATE_SCHEMA = {"type": "string", "description": "ISO date YYYY-MM-DD (only for period=custom)."}
-DEPT_SCHEMA = {"type": "string", "description": "Department name or code (optional)."}
+DEPT_SCHEMA = {
+    "type": ["string", "null"],
+    "description": "Optional department name or code. Use null or omit this field to include all departments.",
+}
 
 
 class ToolDenied(Exception):
