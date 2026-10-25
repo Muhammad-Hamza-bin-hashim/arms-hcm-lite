@@ -1,19 +1,18 @@
-# AR&MS HCM Lite
+# ARMS HCM
 
-AI-assisted Human Capital Management for **AR&MS Management Company**, built for the Saylani Hackathon (HCM Lite brief).
-Three roles (Admin, HR, Employee), 9 modules and 25 functionalities. Every number comes from records created in the app; there is no seeded or dummy data.
+A modern, role-based Human Capital Management System (HRMS) designed for **AR&MS Management Company**. Built with security, automation, and data integrity at its core, ARMS HCM streamlines employee lifecycle management, attendance, leave, payroll, and analytics in one unified platform.
 
-**Live app:** https://arms-hcm-lite.onrender.com (opens on the first-run setup screen; on Render's free plan the first visit can take up to a minute to wake up)
+**Live Demo:** [https://arms-hcm-lite.onrender.com](https://arms-hcm-lite.onrender.com) — On Render's free tier, the app may take up to 60 seconds to cold-start on the first request.
 
-**Repository:** https://github.com/Muhammad-Hamza-bin-hashim/arms-hcm-lite
+**Repository:** [https://github.com/Muhammad-Hamza-bin-hashim/arms-hcm-lite](https://github.com/Muhammad-Hamza-bin-hashim/arms-hcm-lite)
 
 | | |
 |---|---|
-| **Backend** | Python 3.12+ · Django 6 · Django REST Framework · SimpleJWT · bcrypt · ReportLab (payslip PDF) |
-| **Frontend** | React 19 · TypeScript · Vite · Tailwind CSS 4 · TanStack Query · Recharts · MediaPipe (camera check-in) |
-| **Database** | SQLite locally, PostgreSQL in production (`DATABASE_URL`) |
-| **AI** | Claude via the Anthropic SDK, or any OpenAI-compatible API with tool calling (Groq / Gemini free tiers work) |
-| **Deploy** | One Docker service: Django serves the API at `/api/` and the built SPA at every other path |
+| **Backend** | [Python 3.12+](https://www.python.org/) · [Django 6](https://www.djangoproject.com/) · [Django REST Framework](https://www.django-rest-framework.org/) · [SimpleJWT](https://django-rest-framework-simplejwt.readthedocs.io/) · [bcrypt](https://pypi.org/project/bcrypt/) · [ReportLab](https://www.reportlab.com/) (PDF Payslips) |
+| **Frontend** | [React 19](https://react.dev/) · [TypeScript](https://www.typescriptlang.org/) · [Vite](https://vitejs.dev/) · [Tailwind CSS 4](https://tailwindcss.com/) · [TanStack Query](https://tanstack.com/query) · [Recharts](https://recharts.org/) · [MediaPipe](https://developers.google.com/mediapipe) (Camera-based Check-In) |
+| **Database** | [SQLite](https://www.sqlite.org/) (Local) · [PostgreSQL](https://www.postgresql.org/) (Production via `DATABASE_URL`) |
+| **AI Integration** | [Anthropic Claude](https://www.anthropic.com/) or any OpenAI-compatible provider with function/tool calling (e.g., [Groq](https://console.groq.com/), [Google Gemini](https://ai.google.dev/)) |
+| **Deployment** | Single-container Docker setup — Django serves both the REST API (`/api/`) and the compiled React SPA. |
 
 ---
 
@@ -182,52 +181,53 @@ Every dashboard accepts `from`, `to` and `department`. Empty data returns `null`
 
 ---
 
-## The 25 functionalities
+## Core Features
 
-| # | Functionality | Status | Where |
+| # | Feature | Status | Location |
 |---|---|---|---|
-| 01 | First-run setup | ✅ | `/api/setup/`, setup screen, `bootstrap_admin` |
-| 02 | Login, logout, change password, role menus/dashboards | ✅ | `apps/accounts`, Layout |
-| 03 | Company settings incl. location & radius | ✅ | Organization → Company & rules |
-| 04 | Departments, designations, leave types, holidays | ✅ | Organization tabs |
-| 05 | Create HR logins; deactivate / reset any login | ✅ | Users & logins |
-| 06 | Register employee (creates login) / edit; own phone & address | ✅ | Employees, Profile |
-| 07 | Directory with server-side search, filters, paging; Employee 360 | ✅ | Employees, `/employees/:id` |
-| 08 | CSV import with dry-run report (row/field/reason); CSV export | ✅ | Employees → Import / Export |
-| 09 | Web check-in / check-out | ✅ | Dashboard widget, My attendance |
-| 10 | Attendance calendar and daily board | ✅ | My attendance, Attendance board |
-| 11 | Attendance correction request / approve | ✅ | My attendance, Corrections |
-| 12 | Apply / cancel leave, balance, history | ✅ | My leave |
-| 13 | Approve / reject leave with comment | ✅ | Leave requests |
-| 14 | Salary structure per employee | ✅ | Salary structures |
-| 15 | Monthly payroll draft | ✅ | Payroll runs |
-| 16 | Finalize payroll (locks month) | ✅ | Payroll run → Finalize (Admin) |
-| 17 | Payslips with PDF | ✅ | Payslips |
-| 18 | Dashboards, KPIs, trends, insights with filters | ✅ | Dashboard (per role) |
-| 19 | AI chat on real data, role-scoped | ✅ | Assistant button (all pages) |
-| 20 | AI dashboard summary | ✅ | Dashboard → Summarize |
-| 21 | Smart leave | ✅ | My leave → Smart leave |
-| 22 | Policy Q&A | ✅ | Assistant |
-| 23 | Announcements | ✅ | Announcements, dashboards |
-| 24 | In-app notifications | ✅ | Bell icon |
-| 25 | Audit log | ✅ | Audit log (Admin) |
+| 01 | First-run setup | ✅ | `/api/setup/`, Setup Screen, `bootstrap_admin` |
+| 02 | Authentication (Login, Logout, Change Password), Role-based Menus & Dashboards | ✅ | `apps/accounts`, Layout |
+| 03 | Company Settings (Office Hours, Location & Geofence) | ✅ | Organization → Company & Rules |
+| 04 | Departments, Designations, Leave Types & Holidays Management | ✅ | Organization |
+| 05 | HR User Management (Create, Deactivate, Reset Logins) | ✅ | Users & Logins |
+| 06 | Employee Registration & Profile Management (Own Contact Updates) | ✅ | Employees, Profile |
+| 07 | Employee Directory with Search/Filters/Pagination & Employee 360 View | ✅ | Employees, `/employees/:id` |
+| 08 | Bulk CSV Import (Dry-Run Validation) & Export | ✅ | Employees → Import / Export |
+| 09 | Web-based Check-In/Check-Out | ✅ | Dashboard Widget, My Attendance |
+| 10 | Attendance Calendar & Daily Attendance Board | ✅ | My Attendance, Attendance Board |
+| 11 | Attendance Correction Requests (Submit, Approve, Reject) | ✅ | My Attendance, Corrections |
+| 12 | Leave Application, Cancellation, Balances & History | ✅ | My Leave |
+| 13 | Leave Approval/Rejection with Comments (HR/Admin Workflow) | ✅ | Leave Requests |
+| 14 | Salary Structure Management per Employee | ✅ | Salary Structures |
+| 15 | Monthly Payroll Draft Generation | ✅ | Payroll Runs |
+| 16 | Payroll Finalization (Locked & Auditable) | ✅ | Payroll Run → Finalize (Admin Only) |
+| 17 | Payslips with Downloadable PDF | ✅ | Payslips |
+| 18 | Role-based Dashboards, KPIs, Trends & Insights with Filters | ✅ | Dashboard (Per Role) |
+| 19 | AI Assistant with Real-Time, Role-Scoped Data Access | ✅ | Assistant (All Pages) |
+| 20 | AI-Powered Dashboard Summary | ✅ | Dashboard → Summarize |
+| 21 | Smart Leave (AI-Assisted Leave Application) | ✅ | My Leave → Smart Leave |
+| 22 | AI Policy Q&A | ✅ | Assistant |
+| 23 | Announcements | ✅ | Announcements, Dashboards |
+| 24 | In-App Notifications | ✅ | Notification Bell |
+| 25 | Immutable Audit Log | ✅ | Audit Log (Admin Only) |
 
-**Bonus implemented:**
-- Camera check-in with face detection (MediaPipe, exactly one face) plus server-side geofence and GPS-accuracy checks.
-- **Attrition-risk score** (0–100, last 60 days) from absences, lateness, unpaid and rejected leave, tenure and probation. Every score lists its reasons (`apps/analytics/insights.py`).
-- **Absence anomaly flags:** 3+ consecutive absences, Monday/Friday clustering, repeated missing check-outs, and departments at 2× the company absenteeism rate.
-- Late-penalty rule (3 lates = 0.5 day; toggle in settings).
-- Roman Urdu in the AI.
-- Dark mode and an installable PWA manifest.
+## Additional Features
 
-### Not done / known limits
+- **Camera-Based Check-In** – Face detection via MediaPipe (exactly one face required), with server-side geofencing and GPS accuracy validation. No facial images or biometric templates are stored.
+- **Attrition Risk Scoring** – Predictive risk score (0–100) based on the last 60 days of absences, lateness, unpaid/rejected leave, tenure, and probation status, with explainable reasons (`apps/analytics/insights.py`).
+- **Absence Anomaly Detection** – Flags 3+ consecutive absences, Monday/Friday clustering, repeated missing check-outs, and departments with absenteeism rates ≥ 2× the company average.
+- **Late Penalty Rule** – Configurable rule (3 late arrivals = 0.5 day deduction), toggleable from Company Settings.
+- **Multilingual Support** – AI assistant supports Roman Urdu in addition to English.
+- **Dark Mode & PWA** – Fully responsive UI with dark mode support and an installable Progressive Web App (PWA) manifest.
 
-- No native mobile app. Camera check-in works in mobile and desktop browsers instead.
-- No face *matching* against an enrolled face and no liveness check. Detection only, by design, so no biometric data is stored.
-- No password-reset email. Admin resets passwords and shares the temporary one.
-- Front-end tests cover the API client, UI states and role-based navigation. Full click-through flows are covered by `scripts/smoke_test.py` (API) and the manual guide, not by a browser test runner.
+## Limitations
 
-## Project layout
+- **No Native Mobile App** – Camera-based check-in is supported via modern mobile and desktop browsers; no dedicated iOS/Android app is included.
+- **Face Detection Only** – The system performs face detection (MediaPipe) but does not implement face matching or liveness detection. No biometric data is stored by design.
+- **No Self-Service Password Reset** – Password resets are handled by Admin; no email-based password recovery is implemented.
+- **Test Coverage Scope** – Frontend tests cover the API client, UI states, and role-based navigation. End-to-end browser testing is not included; API-level flows are validated via `scripts/smoke_test.py` and the manual testing guide.
+
+## Project Structure
 
 ```
 backend/
